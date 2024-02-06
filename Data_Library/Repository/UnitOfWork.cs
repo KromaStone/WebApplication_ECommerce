@@ -16,8 +16,32 @@ namespace Data_Library.Repository
         {
             _context = context;
             Category = new CategoryRepository(_context);
+            Covertype = new CoverTypeRepository(_context);
+            SpCall = new SpCall(_context);
+            Product = new ProductRepository(_context);
+            Company = new CompanyRepositry(_context);
+            OrderHeader = new OrderheaderRepository(_context);
+            OrderDetail = new OrderDetailRepository(_context);
+            ApplicationUser = new ApplicationUserRepository(_context);
+            ShoppingCart = new ShoppingCartRepository(_context);
+
         }
         public ICategoryRepository Category { get; private set; }
+        public ICoverTypeRepository Covertype { get; private set; }
+        public ISpCall SpCall { get; private set; }
+        public IProductRepository Product { get; private set; }
+
+        public ICompany Company { get; private set; }
+
+        public IOrderHeader OrderHeader { get; private set; }
+
+        public IOrderDetailRepository OrderDetail { get; private set; }
+
+        public IApplicationUserRepository ApplicationUser { get; private set; }
+
+        public IShoppingCartRepository ShoppingCart { get; private set; }
+
+        ICoverTypeRepository IUnitOfWork.CoverType => throw new NotImplementedException();
 
         public void Save()
         {
